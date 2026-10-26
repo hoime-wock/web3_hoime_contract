@@ -1,0 +1,42 @@
+{
+  "name": "web3_hoime_contract",
+  "version": "1.0.0",
+  "description": "ERC20 launcher contracts built with Hardhat 3 and viem",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "hardhat build",
+    "clean": "hardhat clean",
+    "test": "hardhat test",
+    "test:solidity": "hardhat test solidity",
+    "test:nodejs": "hardhat test nodejs",
+    "typecheck": "tsc --noEmit",
+    "export:abi": "node scripts/export-abi.mjs",
+    "export:standard-json": "node scripts/export-standard-json.mjs",
+    "deploy:local": "hardhat ignition deploy ignition/modules/Launcher.ts",
+    "deploy:sepolia": "hardhat ignition deploy ignition/modules/Launcher.ts --network sepolia --verify",
+    "deploy:shibarium": "hardhat ignition deploy ignition/modules/Launcher.ts --network shibarium",
+    "deploy:puppynet": "hardhat ignition deploy ignition/modules/Launcher.ts --network puppynet",
+    "verify:sepolia": "hardhat ignition verify chain-11155111",
+    "verify:shibarium": "hardhat verify blockscout --network shibarium",
+    "verify:puppynet": "hardhat verify blockscout --network puppynet",
+    "verify:explorer": "node scripts/verify-explorer.mjs"
+  },
+  "keywords": [
+    "hardhat",
+    "viem",
+    "solidity",
+    "erc20"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ignition": "^3.1.9",
+    "@nomicfoundation/hardhat-toolbox-viem": "^5.0.7",
+    "@openzeppelin/contracts": "^5.6.1",
+    "@types/node": "^22.20.5",
+    "forge-std": "github:foundry-rs/forge-std#v1.16.2",
+    "hardhat": "^3.20.0",
+    "typescript": "~6.0.3",
+    "viem": "^2.57.10"
+  }
+}
