@@ -17,6 +17,7 @@
     "deploy:sepolia": "hardhat ignition deploy ignition/modules/Launcher.ts --network sepolia --verify",
     "deploy:shibarium": "hardhat ignition deploy ignition/modules/Launcher.ts --network shibarium",
     "deploy:puppynet": "hardhat ignition deploy ignition/modules/Launcher.ts --network puppynet",
+    "deploy:faucet:puppynet": "hardhat ignition deploy ignition/modules/Faucet.ts --network puppynet",
     "verify:sepolia": "hardhat ignition verify chain-11155111",
     "verify:shibarium": "hardhat verify blockscout --network shibarium",
     "verify:puppynet": "hardhat verify blockscout --network puppynet",

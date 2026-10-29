@@ -9,18 +9,21 @@
 
 ```
 contracts/
-  Launcher.sol        # 代币工厂：收费、部署、退款、提现
-  MyToken.sol         # 固定供应量的 ERC20，支持自定义精度
-  Launcher.t.sol      # Solidity 单元测试（forge-std）
+  01-Launcher/
+    Launcher.sol      # 代币工厂：收费、部署、退款、提现
+    MyToken.sol       # 固定供应量的 ERC20，支持自定义精度
+    Launcher.t.sol    # Solidity 单元测试（forge-std）
 test/
-  launcher.ts         # TypeScript 集成测试（node:test + viem）
+  launcher.ts         # Launcher 的 TypeScript 集成测试
 ignition/modules/
-  Launcher.ts         # Ignition 部署模块
+  Launcher.ts         # Launcher 部署模块
 abi/
   Launcher.json       # 导出的 ABI（前端 / 脚本使用）
   MyToken.json
 scripts/
   export-abi.mjs      # 从编译产物导出 ABI
+  export-standard-json.mjs
+  verify-explorer.mjs
   send-op-tx.ts       # Hardhat 官方示例脚本（OP 链发送交易）
 hardhat.config.ts
 ```
@@ -243,6 +246,7 @@ npm run verify:puppynet -- <Launcher 地址>
 - 工厂创建的合约（比如 `MyToken`）要手动传构造参数：`initialOwner`、`name`、`symbol`、未乘精度的 `totalSupply`、`decimals`。
 - 用 `verify blockscout` 子任务；不要用不带子任务的 `hardhat verify`，它会依次尝试 Etherscan、Blockscout、Sourcify，在这些链上会因不支持的验证器报错退出。
 - 被 Cloudflare 拦时，用独立脚本 `npm run verify:explorer -- 0x合约地址`（不依赖 Hardhat 的 build profile 或 keystore）；具体见 [verify/README.md](verify/README.md)。
+- 当前已部署合约的验证状态、源码路径变更的影响、以后补验证的步骤，统一记录在 [VERIFICATION.md](VERIFICATION.md)。
 
 ## ABI
 
